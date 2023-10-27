@@ -3,16 +3,18 @@ This project is a user-friendly API designed for performing CRUD (Create, Read, 
 
 <h1>Integrantes</h1>
 
+<table>
 <tr>
   <th>Gustavo Henrique</th>
   <th>Gabriele Rodrigues</th>
   <th>Angelo</th>
 </tr>
-
+</table>
 <h2>Tecnologias usadas</h2>
-
+<table>
 <tr>
   <th>Boostrap</th>
   <th>Laravel</th>
   <th>MySQL</th>
 </tr>
+</table>
