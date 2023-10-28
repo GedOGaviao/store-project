@@ -4,88 +4,54 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 10px;
-    flex-wrap: wrap;
-    background-color: #fff;
-    padding: 100px;
-    box-shadow: 0px 0px 5px #ccc;
-    border-radius: 5px;        
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 100px;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 5px;
 `;
 
 const InputArea = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;    
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  flex: 1;
 `;
 
 const Input = styled.input`
-    max-width: 100%;
-    padding: 0 10px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    height: 40px;
+  max-width: 100%;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 40px;
 
-    &[name="companyName"] {
-        width: 450px; /* You can adjust the width as needed */
-    }
+  &:not([name="companyName"]):not([name="contactName"]):not([name="contactTitle"]):not([name="address"]) {
+    width: 300px; /* Defina o tamanho padrão para outros campos */
+  }
 
-    &[name="contactName"] {
-        width: 450px; /* You can adjust the width as needed */
-    }
-
-    &[name="contactTitle"] {
-        width: 450px; /* You can adjust the width as needed */
-    }
-
-    &[name="address"] {
-        width: 450px; /* You can adjust the width as needed */
-    }
-
-    &[name="fax"] {
-        width: 150px; /* You can adjust the width as needed */
-    }
-
-    &[name="birthDate"] {
-        width: 150px; /* You can adjust the width as needed */
-    }
-
-    &[name="phone"] {
-        width: 150px; /* You can adjust the width as needed */
-    }
-
-    &[name="city"] {
-        width: 150px; /* You can adjust the width as needed */
-    }
-
-    &[name="country"] {
-        width: 156px; /* You can adjust the width as needed */
-    }
-
-    &[name="region"] {
-        width: 156px; /* You can adjust the width as needed */
-    }
-
-    &[name="postalCode"] {
-        width: 156px; /* You can adjust the width as needed */
-    }
-
+  &[name="companyName"],
+  &[name="contactName"],
+  &[name="address"],
+  &[name="contactTitle"] {
+    width: 450px; /* Defina o tamanho maior para campos específicos */
+  }
+  
 `;
 
 const Button = styled.button`
-    padding: 10px;  
-    height: 42px;
-    cursor: pointer;        
-    border-radius: 5px;
-    color: ${props => props.theme.main};
-    border: 2px solid ${props => props.theme.main};
-    width: 555px;
-    margin-top: 10px;
+  padding: 10px;
+  height: 42px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: ${props => props.theme.main};
+  border: 2px solid ${props => props.theme.main};
+  width: 100%;
+  margin-top: 10px;
 `;
-
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
     const ref = useRef();
@@ -104,7 +70,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
             user.postalCode.value = onEdit.PostalCode;
             user.country.value = onEdit.Country;
             user.phone.value = onEdit.Phone;
-            user.fax.value = onEdit.Formax;
+            user.fax.value = onEdit.Fax;
         }
     }, [onEdit]);
     
