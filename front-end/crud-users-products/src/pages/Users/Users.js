@@ -1,8 +1,8 @@
 import { toast, ToastContainer } from "react-toastify";
 import { styled } from "styled-components";
-import Form from './Form.js';
-import Grid from "./Grid.js";
-import Navbar from "../navbar/NavBar.js";
+import Form from '../../components/Users/Form.js';
+import Grid from "../../components/Users/Grid.js";
+import Navbar from "../../components/Navbar/NavBar.js";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css"
 import axios from "axios";
@@ -25,7 +25,7 @@ function Users() {
 
   const getUsers = async () => {
     try {
-      // const res = await axios.get("");  
+      // const res = await axios.get("http://localhost:8800/");  
       const res = [
         {          
           CompanyName: "Alfreds Futterkiste",

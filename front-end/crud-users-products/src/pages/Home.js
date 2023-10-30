@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from "./navbar/NavBar.js";
+import Navbar from "../components/Navbar/NavBar.js";
 
 const HomeContentStyles = styled.div`
   display: flex;

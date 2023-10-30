@@ -50,7 +50,7 @@ export const Td = styled.td`
     }
 `;
 
-const Grid = ({ users, setUsers, setOnEdit }) => {
+const Grid = ({ orders, setOrders, setOnEdit }) => {
 
     const handleEdit = (item) => {
         setOnEdit(item);
@@ -60,9 +60,9 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
         await axios
           .delete("http://localhost:8800/" + id)
           .then(({ data }) => {
-            const newArray = users.filter((user) => user.id !== id);
+            const newArray = orders.filter((order) => order.id !== id);
     
-            setUsers(newArray);
+            setOrders(newArray);
             toast.success(data);
           })
           .catch(({ data }) => toast.error(data));
@@ -74,48 +74,48 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
         <Table>
             <Thead>
                 <Tr>
-                    <Th>CustomerID</Th>
-                    <Th>ContactName</Th>
-                    <Th>CompanyName</Th>
-                    <Th onlyWeb>ContactTitle</Th>
-                    <Th>Address</Th>
-                    <Th>City</Th>
-                    <Th>Region</Th>
-                    <Th>PostalCode</Th>
-                    <Th>Country</Th>
-                    <Th>Phone</Th>
-                    <Th>Fax</Th>
+                    <Th>OrderID</Th>
+                    <Th>OrderDate</Th>
+                    <Th>RequiredDate</Th>
+                    <Th>ShippedDate</Th>
+                    <Th>ShipVia</Th>
+                    <Th>ShipName</Th>
+                    <Th>ShipAddress</Th>
+                    <Th>ShipCity</Th>
+                    <Th>ShipRegion</Th>
+                    <Th>ShipPostalCode</Th>
+                    <Th>ShipCountry</Th>
                 </Tr>
             </Thead>
             <Tbody>
-                {users && users.length > 0 ? (
-                    users.map((user, CustomerID) => (                    
+                {orders && orders.length > 0 ? (
+                    orders.map((order, OrderID) => (                    
                         <HighlightOnHoverTr 
-                            key={CustomerID}
-                            onClick={() => handleEdit(user)}
+                            key={OrderID}
+                            onClick={() => handleEdit(order)}
                         >                            
                             <Td width="178px">
-                                <Link to={`/orders/${user.CustomerID}`}>{user.CustomerID}</Link>
+                                <Link to={`/orders/${order.OrderID}`}>{order.OrderID}</Link>
                             </Td>
-                            <Td width="158px">{user.ContactName}</Td>
-                            <Td width="158px">{user.CompanyName}</Td>
-                            <Td width="178px">{user.ContactTitle}</Td>
-                            <Td width="128px">{user.Address}</Td>
-                            <Td width="78px">{user.City}</Td>
-                            <Td width="78px">{user.Region}</Td>
-                            <Td width="118px">{user.PostalCode}</Td>
-                            <Td width="128px">{user.Country}</Td>
-                            <Td width="108px" onlyWeb>{user.Phone}</Td>
-                            <Td width="128px">{user.Fax}</Td>
+                            <Td width="158px">{order.OrderDate}</Td>
+                            <Td width="158px">{order.RequiredDate}</Td>
+                            <Td width="178px">{order.ShippedDate}</Td>
+                            <Td width="128px">{order.ShipVia}</Td>
+                            <Td width="78px">{order.ShipName}</Td>
+                            <Td width="78px">{order.ShipAddress}</Td>
+                            <Td width="118px">{order.ShipCity}</Td>
+                            <Td width="128px">{order.ShipRegion}</Td>
+                            <Td width="108px" onlyWeb>{order.ShipPostalCode}</Td>
+                            <Td width="128px">{order.ShipCountry}</Td>
                             <Td alignCenter width="5%">
                                 <FaEdit 
-                                    onClick={() => handleEdit(user)} 
+                                    onClick={() => handleEdit(order)} 
                                     style={{ cursor: 'pointer' }}
                                 />
                             </Td>
                             <Td alignCenter width="5%">
                                 <FaTrash 
-                                    onClick={() => handleDelete(user.id)} 
+                                    onClick={() => handleDelete(order.id)} 
                                     style={{ cursor: 'pointer' }}
                                 />
                             </Td>
