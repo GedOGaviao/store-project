@@ -4,22 +4,30 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza no eixo vertical */
+    justify-content: center; /* Centraliza no eixo horizontal */
+    gap: 10px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    height: 45vh;
+    width: 1240px;
+`;
+
+const InputGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-  background-color: #fff;
-  padding: 100px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
+  align-items: center;
+  gap: 40px;
 `;
 
 const InputArea = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 20px;
-  flex: 1;
 `;
 
 const Input = styled.input`
@@ -30,16 +38,15 @@ const Input = styled.input`
   height: 40px;
 
   &:not([name="companyName"]):not([name="contactName"]):not([name="contactTitle"]):not([name="address"]) {
-    width: 300px; /* Defina o tamanho padrão para outros campos */
+    width: 210px;
   }
 
   &[name="companyName"],
   &[name="contactName"],
   &[name="address"],
   &[name="contactTitle"] {
-    width: 450px; /* Defina o tamanho maior para campos específicos */
+    width: 350px;
   }
-  
 `;
 
 const Button = styled.button`
@@ -49,8 +56,8 @@ const Button = styled.button`
   border-radius: 5px;
   color: ${props => props.theme.main};
   border: 2px solid ${props => props.theme.main};
-  width: 100%;
-  margin-top: 10px;
+  width: 300px;
+  margin-top: 20px;
 `;
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
@@ -147,53 +154,61 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
     return (
         <FormContainer ref={ref}>
-            <InputArea>
-                <label htmlFor="company name">Company Name:</label>
-                <Input name="companyName" type="text"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="contact name">Contact Name:</label>
-                <Input name="contactName" type="text"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="contact title">Contact Title:</label>
-                <Input name="contactTitle" type="text"/>
-            </InputArea> 
-            <InputArea>  
-                <label htmlFor="address">Address:</label>              
-                <Input name="address" type="text"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="city">City:</label>
-                <Input name="city"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="region">Region:</label>
-                <Input name="region"/>
-            </InputArea>                       
-            {/* <InputArea>
-                <label htmlFor="birth date">Birth Date:</label>
-                <Input name="birthDate" type="date"/>
-            </InputArea>                      */}
-            <InputArea>
-                <label htmlFor="postal code">Postal Code:</label>
-                <Input name="postalCode"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="country">Country:</label>
-                <Input name="country"/>
-            </InputArea>
-            <InputArea>
-                <label htmlFor="phone">Phone:</label>
-                <Input name="phone"/>
-            </InputArea>    
-            <InputArea>
-                <label htmlFor="fax">Fax:</label>
-                <Input name="fax"/>
-            </InputArea>                     
-                                                
+
+            <InputGroup>
+                <InputArea>
+                    <label>Company Name</label>
+                    <Input name="companyName" />
+                </InputArea>
+                <InputArea>
+                    <label>Contact Name</label>
+                    <Input name="contactName" />
+                </InputArea>
+            </InputGroup>
+
+            <InputGroup>
+                <InputArea>
+                    <label htmlFor="contact title">Contact Title:</label>
+                    <Input name="contactTitle" type="text"/>
+                </InputArea> 
+                <InputArea>  
+                    <label htmlFor="address">Address:</label>              
+                    <Input name="address" type="text"/>
+                </InputArea>
+            </InputGroup>
+            
+            <InputGroup>
+                <InputArea>
+                    <label htmlFor="city">City:</label>
+                    <Input name="city"/>
+                </InputArea>
+                <InputArea>
+                    <label htmlFor="region">Region:</label>
+                    <Input name="region"/>
+                </InputArea>   
+                <InputArea>
+                    <label htmlFor="postal code">Postal Code:</label>
+                    <Input name="postalCode"/>
+                </InputArea>
+            </InputGroup>
+            
+            <InputGroup>
+                <InputArea>
+                    <label htmlFor="country">Country:</label>
+                    <Input name="country"/>
+                </InputArea>
+                <InputArea>
+                    <label htmlFor="phone">Phone:</label>
+                    <Input name="phone"/>
+                </InputArea>    
+                <InputArea>
+                    <label htmlFor="fax">Fax:</label>
+                    <Input name="fax"/>
+                </InputArea>     
+            </InputGroup>                                                                        
 
             <Button type="submit" theme={{ main: "darkorange" }}>Salvar</Button>
+            
         </FormContainer>
     );
 };
